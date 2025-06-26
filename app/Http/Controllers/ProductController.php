@@ -36,11 +36,9 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show()
     {
-        return Inertia::render('products/show', [
-            'product' => $product,
-        ]);
+        return Inertia::render('products/show');
     }
 
     /**

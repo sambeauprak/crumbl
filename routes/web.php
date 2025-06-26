@@ -9,22 +9,22 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
+    return Inertia::render('home');
 })->name('home');
 
-Route::resource('produits', ProductController::class);
+Route::resource('products', ProductController::class);
 
-Route::get('politique-confidentialite', function () {
-    return Inertia::render('global/politique-confidentialite');
-})->name('politique-confidentialite');
+Route::get('privacy-policy', function () {
+    return Inertia::render('global/privacy-policy');
+})->name('privacy-policy');
 
-Route::get('mentions-legales', function () {
-    return Inertia::render('global/mentions-legales');
-})->name('mentions-legales');
+Route::get('terms', function () {
+    return Inertia::render('global/terms');
+})->name('terms');
 
-Route::get('paiement', function () {
-    return Inertia::render('paiement');
-})->name('paiement');
+Route::get('checkout', function () {
+    return Inertia::render('checkout');
+})->name('checkout');
 
 Route::middleware(['auth', 'verified'])
     ->prefix('dashboard')
@@ -32,12 +32,12 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/', function () {
             return Inertia::render('dashboard');
-        })->name('index');
+        })->name('dashboard');
 
-        Route::resource('produits', AdminProductController::class);
-        Route::resource('utilisateurs', AdminUserController::class);
+        Route::resource('products', AdminProductController::class);
+        Route::resource('users', AdminUserController::class);
         Route::resource('categories', AdminCategoryController::class);
-        Route::resource('commandes', AdminOrderController::class);
+        Route::resource('orders', AdminOrderController::class);
     });
 
 require __DIR__ . '/settings.php';

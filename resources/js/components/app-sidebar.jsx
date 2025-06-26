@@ -3,7 +3,7 @@ import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, BoxesIcon, CookieIcon, Folder, LayoutGrid, ReceiptEuroIcon, UsersIcon } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems = [
@@ -11,6 +11,27 @@ const mainNavItems = [
         title: 'Dashboard',
         url: '/dashboard',
         icon: LayoutGrid,
+    },
+    {
+        title: 'Utilisateurs',
+        url: '/dashboard/utilisateurs',
+        icon: UsersIcon,
+    },
+    {
+        title: 'Produits',
+        url: '/dashboard/produits',
+        routeName: 'dashboard.produits.index',
+        icon: CookieIcon,
+    },
+    {
+        title: 'Catégories',
+        url: '/dashboard/categories',
+        icon: BoxesIcon,
+    },
+    {
+        title: 'Commandes',
+        url: '/dashboard/commandes',
+        icon: ReceiptEuroIcon,
     },
 ];
 

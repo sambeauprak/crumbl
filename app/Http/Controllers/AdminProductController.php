@@ -13,7 +13,10 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        return Inertia::render('admin/products/index');
+        $products = Product::all();
+        return Inertia::render('admin/products/index', [
+            'products' => $products,
+        ]);
     }
 
     /**
@@ -21,7 +24,7 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('admin/products/create');
     }
 
     /**
@@ -29,7 +32,20 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'image' => 'nullable|image|max:2048|mimes:jpg,png', // ma
+        ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image_url'] = $request->file('image')->store('products', 'public');
+        }
+
+        Product::create($validated);
+
+        return redirect()->route('dashboard.products.index')->with('success', 'Product created successfully.');
     }
 
     /**

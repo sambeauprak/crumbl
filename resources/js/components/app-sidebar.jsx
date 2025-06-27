@@ -10,27 +10,31 @@ const mainNavItems = [
     {
         title: 'Dashboard',
         url: '/dashboard',
+        routeName: 'dashboard.index',
         icon: LayoutGrid,
     },
     {
         title: 'Utilisateurs',
         url: '/dashboard/utilisateurs',
+        routeName: 'dashboard.users.index',
         icon: UsersIcon,
     },
     {
         title: 'Produits',
         url: '/dashboard/produits',
-        routeName: 'dashboard.produits.index',
+        routeName: 'dashboard.products.index',
         icon: CookieIcon,
     },
     {
         title: 'Catégories',
         url: '/dashboard/categories',
+        routeName: 'dashboard.categories.index',
         icon: BoxesIcon,
     },
     {
         title: 'Commandes',
         url: '/dashboard/commandes',
+        routeName: 'dashboard.orders.index',
         icon: ReceiptEuroIcon,
     },
 ];
@@ -55,7 +59,7 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href="/dashboard" prefetch>
+                            <Link href={route('dashboard.index')} prefetch>
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>

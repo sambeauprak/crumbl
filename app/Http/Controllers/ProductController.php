@@ -38,7 +38,12 @@ class ProductController extends Controller
      */
     public function show()
     {
-        return Inertia::render('products/show');
+        $product = Product::findOrFail(request()->route('product'));
+
+
+        return Inertia::render('products/show', [
+            'product' => $product
+        ]);
     }
 
     /**

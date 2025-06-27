@@ -32,7 +32,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/', function () {
             return Inertia::render('dashboard');
-        })->name('dashboard');
+        })->name('index');
 
         Route::resource('products', AdminProductController::class);
         Route::resource('users', AdminUserController::class);
